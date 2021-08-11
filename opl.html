@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Оплата ОСАГО онлайн</title>
+
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/theme-style.css" />
+  <link rel="stylesheet" type="text/css" href="css/new-style.css" />
+
+</head>
+
+<body>
+  <!-- header -->
+  <header class="header">
+    <div class="header__wrapper wrapper">
+      <a href="index.html" class="header__logo">
+        <img src="img/logo-top-3.png" alt="Автострах - союз страховых брокеров">
+      </a>
+      <ul class="header__menu-home">
+        <li class="header__item">
+          <a href="index.html" class="header__link header__link_home">На главную</a>
+        </li>
+      </ul>
+      <div class="header__contacts">
+        <a href="mailto:osagopoisk@gmail.com" class="header__email">osagopoisk@gmail.com</a>
+      </div>
+    </div>
+  </header>
+  <!-- header -->
+
+  <!-- sec-call -->
+  <section class="sec-call indent-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="call-item">
+            Оплата полиса
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- sec-call -->
+  <div class="wrapper main">
+    <!--Форма-->
+    <form id="ya_pay">
+      <input type="hidden" name="receiver" value="41001731228181">
+      <input type="hidden" name="quickpay-form" value="donate">
+      <input type="hidden" name="targets" value="помощь">
+      <input type="hidden" name="need-fio" value="false">
+      <input type="hidden" name="need-email" value="false">
+      <input type="hidden" name="need-phone" value="false">
+      <input type="hidden" name="need-address" value="false">
+      <div class="line">
+
+        <div class="field">
+          <span class="wpcf7-form-control-wrap f17">
+                              <label class="opl-lab" style="">Сумма</label>
+                                <input type="text" id="ya_summ" name="sum" value="" data-type="number" style="width: 150px; display: inline-block;">
+                           <div id="clearButton">x</div> 
+                            </span>
+        </div>
+
+        <div class="field">
+          <span class="wpcf7-form-control-wrap f17">
+                              <label class="opl-lab" style="">Ваш Email адрес</label>
+                                <input placeholder="Ваш Email адрес" id="lv-formLanding1-email" size="" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required required js-email" name="comment" type="text" maxlength="255" style="width:220px; display: inline-block;"/>
+                              <span id="valid" style="color: red; font-size: 12px;"></span>
+          </span>
+        </div>
+      </div>
+      <!-- <div class="radio dop_checkbox">
+                    
+                     <label class="paym-label"> 
+                        <input name="paymentType" value="AC" type="radio" class="change_radio_eosago" checked=""><span class="circle"></span><span class="check"></span>
+                       
+                            Банковской картой
+                    </label>
+                 <label class="paym-label">
+                        <input name="paymentType" class="change_radio_eosago" type="radio" value="PC" ><span class="circle"></span><span class="check"></span> 
+                             Яндекс.Деньгами
+                    </label>
+                </div> -->
+
+      <?php if (isset($_COOKIE['osago_o']) && $_COOKIE['osago_o']) { ?>
+      <?php $payment_link = 'https://yoomoney.ru/payments/checkout/confirmation?orderId=' . $_COOKIE['osago_o']; ?>
+      <?php } ?>
+
+      <a id="bbuy" class="btn btn-primary" href="">Оплатить</a>
+      <!-- <?php if (isset($payment_link) && $payment_link) { ?><?php echo $payment_link; ?><?php } ?> -->
+    </form>
+
+  </div>
+  <script>
+    document.getElementById("clearButton").onclick = function(e) {
+      document.getElementById("ya_summ").value = "";
+    }
+  </script>
+
+  <script>
+    //проверка заплнения E-mail
+    document.getElementById('bbuy').onclick = function() {
+      var re = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i;
+      var myMail = document.getElementById('lv-formLanding1-email').value;
+      var valid = re.test(myMail);
+      if (valid) {
+        return valid;
+      } else {
+        output = 'Ваш Email адрес заполнен не правильно';
+        document.getElementById('valid').innerHTML = output;
+
+      }
+      return false;
+    };
+  </script>
+  <style>
+    #clearButton {
+      font-size: 18px;
+      width: 20px;
+      height: 30px;
+      display: inline-block;
+      margin-left: 10px;
+    }
+    
+    #clearButton:hover {
+      cursor: pointer;
+    }
+    
+    .opl-lab {
+      width: 150px;
+      display: inline-block;
+    }
+    
+    #ya_pay {
+      text-align: center;
+      line-height: 28px;
+      margin-top: 52px;
+      margin-right: auto;
+      margin-left: auto;
+      float: none;
+      padding-top: 35px;
+      padding-bottom: 30px;
+    }
+    
+    form {
+      max-width: 430px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 2px;
+      background-color: #fff;
+    }
+    
+    .btn.btn-primary {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    
+    input[type="text"],
+    input[type="email"] {
+      margin: 0px 0px 10px 0px;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      border: 1px solid #d9d9d9;
+      border-radius: 2px;
+      padding: 0 3%;
+      outline: none;
+      /*box-shadow: inset 0 0 10px #F4F4EC;*/
+    }
+    
+    .field {
+      text-align: left;
+    }
+    
+    input[type="submit"].submit-button {
+      color: #000;
+      border: none;
+      border-radius: 2px;
+      outline: none;
+      background: 0 0;
+      height: 32px;
+      font-size: 15px;
+      line-height: 32px;
+      text-transform: none;
+      background-color: #ffd633;
+      width: 170px;
+    }
+    
+    #plat-form {
+      width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .radio input[type="radio"] {
+      margin-top: 7px;
+    }
+    
+    @media only screen and (max-width: 1023px) {
+      .opl-lab {
+        width: 150px;
+        display: block;
+      }
+      span.wpcf7-form-control-wrap {
+        width: 90%;
+        margin: 0 auto;
+        padding-bottom: 15px;
+      }
+    }
+    
+    @media only screen and (max-width: 768px) {
+      #ya_pay {
+        width: 90%;
+        max-width: 430px;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+    }
+    
+    @media only screen and (max-width: 480px) {
+      #plat-form {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        color: transparent
+      }
+    }
+    
+    @media only screen and (max-width: 370px) {
+      .paym-label {
+        display: block;
+      }
+    }
+  </style>
+  <!-- answer -->
+  <section class="answer" id="answer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="section-title">
+            <h2>Ответы на вопросы</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headin1">
+                <h4 class="panel-title text-left">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                          1. Что такое е-ОСАГО?
+                                        </a>
+                </h4>
+              </div>
+              <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+                <div class="panel-body text-left">
+                  С 1 июля 2015 года вступили в силу поправки к Закону об ОСАГО, дающие водителям возможность оформить и оплатить полис ОСАГО в режиме онлайн на сайтах страховых компаний. С 1 января 2017 года заключение электронных полисов ОСАГО обязательно для страховых
+                  компаний. При оформлении е-ОСАГО вы получаете электронный документ по e-mail, который равнозначен полису, оформленному «по старинке» в офисе. Оформить е-ОСАГО вы можете, если: вы до этого страховали этот автомобиль обычным образом —
+                  данные проверяются в РСА по предыдущему полису, не страховали вовсе или страховали иной автомобиль – в этом случае будет необходимо загрузить в Личный кабинет сканы или фотокопии тех Ваших документов или документов на ТС, данные которых
+                  отсутствуют в системе РСА.
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading2">
+                <h4 class="panel-title  text-left">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                         2. Можно ли внести изменения в полис е-ОСАГО?
+                                        </a>
+                </h4>
+              </div>
+              <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                <div class="panel-body  text-left">
+                  Да. Но все зависит от того, что необходимо изменить. Чтобы внести изменения, вам необходимо обратиться в офис страховой компании.
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading3">
+                <h4 class="panel-title text-left">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                         3. На какую сумму можно застраховать автомобиль? От каких рисков?
+                                        </a>
+                </h4>
+              </div>
+              <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                <div class="panel-body text-left">
+                  ОСАГО можно застраховать в любом субъекте Российской Федерации независимо от места регистрации автомобиля, при этом территориальный коэффициент, влияющий на стоимость при расчете цены полиса, определяется по прописке собственника автомобиля.
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading4">
+                <h4 class="panel-title text-left">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        4. Что делать, если меня остановит сотрудник ГИБДД?
+                                        </a>
+                </h4>
+              </div>
+              <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                <div class="panel-body text-left">
+                  Инспекторы ГИБДД проверяют легитимность электронного полиса ОСАГО через специальный сервис МВД России или с помощью официального сайта РСА (Российского Союза Автостраховщиков). Информация о порядке проверки сотрудниками ГИБДД электронных полисов ОСАГО
+                  доведена до всех заинтересованных лиц Главным управлением по обеспечению безопасности дорожного движения МВД России, в том числе до региональных подразделений Госавтоинспекции письмом от 03.07.2015 №13/12-у-4440. Для упрощения процедуры
+                  проверки электронного полиса ОСАГО необходимо возить с собой распечатку электронной копии, полученной от страховой компании. В любом случае электронный полис ОСАГО или его распечатанная копия равносильны оригинальному полису в бумажном
+                  формате и принимаются всеми учреждениями РФ.
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading5">
+                <h4 class="panel-title text-left">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                          5. Как расторгнуть договор е-ОСАГО?
+                                        </a>
+                </h4>
+              </div>
+              <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+                <div class="panel-body text-left">
+                  Договор расторгается по стандартной процедуре в одном из офисов наших партнеров.
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading6">
+                <h4 class="panel-title text-left">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                           6. Электронный полис дешевле бумажного?
+                                        </a>
+                </h4>
+              </div>
+              <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
+                <div class="panel-body text-left">
+                  Цена полиса не зависит от способа оформления. Оба варианта имеют одинаковую стоимость. Мы предлагаем Вам сэкономить время на посещении офисов и оформить полис ОСАГО дома в режиме онлайн.
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading7">
+                <h4 class="panel-title text-left">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                        7. Нужно ли менять электронный полис ОСАГО на бумажный?
+                                        </a>
+                </h4>
+              </div>
+              <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
+                <div class="panel-body text-left">
+                  Электронный документ имеет такую же силу, как и полис на бланке Гознака. Необходимости в получении бумажного экземпляра нет. Если вы хотите иметь на руках типографский бланк полиса, всегда можно обратиться в один из наших офисов.
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="heading8">
+                <h4 class="panel-title text-left">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                        8. Будет ли учтена скидка за безаварийное вождение?
+                                        </a>
+                </h4>
+              </div>
+              <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
+                <div class="panel-body text-left">
+                  В процессе оформления и расчета мы автоматически проверяем ваши данные через единую информационную систему Российского Союза Автостраховщиков (РСА). Если вы отъездили предыдущий год без аварий, получите скидку за безаварийную езду. При этом обязательно
+                  проверяйте корректность введенной информации. Бывает, что пропущенная буква в фамилии или имени водителя приводит к тому, что скидка за безаварийную езду не будет применена, так как данные в системах РСА и переданные через наш сайт просто
+                  не совпадут.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </section>
+  <!-- answer -->
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="footer__wrapper wrapper">
+      <ul class="header__menu footer__menu">
+        <li class="header__item header__link-indent footer__item footer__link-indent">
+          <a href="whatbuy.html" class="header__link">Как купить полис?</a>
+        </li>
+        <li class="header__item header__link-indent footer__item footer__link-indent">
+          <a href="oferta.html" class="header__link">Оферта</a>
+        </li>
+        <li class="header__item header__link-indent footer__item footer__link-indent">
+          <a href="contacts.html" class="header__link">Реквизиты</a>
+        </li>
+        <li class="header__item footer__item">
+          <a href="opl.html" class="header__link">Оплата</a>
+        </li>
+      </ul>
+      <div class="footer__payment">
+        <img src="img/mastercard.png" />
+        <img src="img/MIR.png" />
+        <img src="img/visa.png" />
+      </div>
+    </div>
+  </footer>
+  <!-- footer -->
+
+
+
+
+
+  <div class="modal fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel"> Спасибо! Наш менеджер свяжется с Вами!
+          </h4>
+        </div>
+        <div class="modal-body">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic-ext" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="fonts/fonts.css" />
+
+
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="css/jquery.webui-popover.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+  <script src="js/jquery-1.11.0.js" type="text/javascript"></script>
+  <!--	<script src="js/jquery.min.js" type="text/javascript"></script>-->
+  <script src="http://malsup.github.com/jquery.form.js"></script>
+  <script src="js/lib/bootstrap.min.js" type="text/javascript"></script>
+  <script src="js/lib/jquery.webui-popover.min.js" type="text/javascript"></script>
+  <script type="text/javascript" src="js/lib/jquery.maskedinput.js"></script>
+  <script type="text/javascript" src="js/material.min.js"></script>
+  <script type="text/javascript" src="js/ripples.min.js"></script>
+
+  <link href="css/check.css" rel="stylesheet">
+
+  <!--  <script src="js/main.js"></script> -->
+  <script>
+    function getCookie(name) {
+      var cookie = " " + document.cookie;
+      var search = " " + name + "=";
+      var setStr = null;
+      var offset = 0;
+      var end = 0;
+      if (cookie.length > 0) {
+        offset = cookie.indexOf(search);
+        if (offset != -1) {
+          offset += search.length;
+          end = cookie.indexOf(";", offset)
+          if (end == -1) {
+            end = cookie.length;
+          }
+          setStr = unescape(cookie.substring(offset, end));
+        }
+      }
+      return (setStr);
+    }
+    jQuery(document).ready(function($) {
+      $("input[name='comment']").val($("input[name='FormLanding[email]']").val());
+      mail = getCookie("osago_email");
+      summ = getCookie("osago_summ");
+      $("#lv-formLanding1-email").val(mail);
+      $("#ya_summ").val(summ);
+      //$("#bbuy").attr("href", oplata_href);
+      $('input[name=paymentType]').change(function() {
+        //$("#bbuy").attr("href", oplata_href);
+      });
+      $('#lv-formLanding1-email').change(function() {
+        mail = $('#lv-formLanding1-email').val();
+        summ = $('#ya_summ').val();
+        //$("#bbuy").attr("href", oplata_href);
+      });
+      $('#ya_summ').change(function() {
+        mail = $('#lv-formLanding1-email').val();
+        summ = $('#ya_summ').val();
+        //$("#bbuy").attr("href", oplata_href);
+      });
+    });
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@18.3.3/dist/css/suggestions.min.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/suggestions-jquery@18.3.3/dist/js/jquery.suggestions.min.js"></script>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-195016111-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-195016111-1');
+  </script>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m, e, t, r, i, k, a) {
+      m[i] = m[i] || function() {
+        (m[i].a = m[i].a || []).push(arguments)
+      };
+      m[i].l = 1 * new Date();
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(76055914, "init", {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true
+    });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/76055914" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  <script>
+    $(document).ready(function() {
+      $(document).on('click', '#bbuy', function(e) {
+        e.preventDefault();
+
+        let $email = getCookie("osago_email");
+        let $summ = getCookie("osago_summ");
+
+        $email = $('#lv-formLanding1-email').val();
+
+        if (!$summ) {
+          $summ = $('#ya_summ').val();
+        }
+
+        $.ajax({
+          url: '/proceed_payment_opl.php',
+          data: {
+            email: $email,
+            phone: '',
+            total: $summ,
+          },
+          type: 'post',
+          dataType: 'json',
+          success: function(json) {
+            if (json.redirect) {
+              window.location.href = json.redirect;
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
+<!--gen:0.0440-->
