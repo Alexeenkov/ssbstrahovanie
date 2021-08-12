@@ -132,13 +132,16 @@ ul {
 }
 .face__content {
   max-width: 800px;
+  position: relative;
+  z-index: 5;
 }
 .face__title {
   color: #2f3542;
   font-size: 50px;
 }
 .face__subtitle {
-  font-size: 20px;
+  font-size: 19px;
+  max-width: 90%;
 }
 .face__button {
   margin-top: 40px;
@@ -171,7 +174,7 @@ ul {
   right: 0;
   bottom: 0;
   width: 100%;
-  max-width: 740px;
+  max-width: 640px;
 }
 .face__image img {
   width: 100%;
@@ -403,6 +406,10 @@ ul {
   margin-bottom: 50px;
 }
 
+.call-item_font {
+  margin-bottom: 100px;
+}
+
 fieldset {
   border: 2px solid #35347e;
   border-radius: 10px;
@@ -468,6 +475,14 @@ legend {
 #accordion .panel-title > a:before,
 #accordion .panel-title > a.collapsed:before {
   top: 28px;
+}
+
+#osago_form a.btn:hover {
+  background-color: #35347e !important;
+}
+
+#osago_form a.btn.btn-success:hover {
+  background-color: #36943a !important;
 }
 
 .panel-group {
@@ -711,7 +726,7 @@ html,
     width: 80%;
   }
   .face__image {
-    width: 72%;
+    width: 61%;
   }
 
   .why {
@@ -775,7 +790,8 @@ html,
     max-width: 35px;
   }
   .face__image {
-    width: 61%;
+    width: 54%;
+    bottom: 47px;
   }
 
   .why__elems {
